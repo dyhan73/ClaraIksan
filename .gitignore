@@ -1,0 +1,10 @@
+build
+out
+*.iml
+*.ipr
+*.iws
+*.db
+*.tps
+*.TPS
+*.csv
+.idea
