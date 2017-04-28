@@ -1,7 +1,7 @@
 package tests.sqlite;
 
 /**
- * Created by 1001235 on 2017. 4. 28..
+ * Created by dyhan on 2017. 4. 28..
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
