@@ -3,11 +3,8 @@ package tests.sqlite;
 /**
  * Created by dyhan on 2017. 4. 28..
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
