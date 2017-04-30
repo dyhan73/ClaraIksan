@@ -17,6 +17,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS bank_account;");
         String query = "CREATE TABLE bank_account\n" +
                 "            (\n" +
                 "    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
@@ -55,6 +56,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS member;");
         String query = "CREATE TABLE member\n" +
                 "            (\n" +
                 "    `rec_no`   INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
@@ -66,7 +68,7 @@ public class CreateTables {
                 "    `zip`      VARCHAR(45)     NULL,\n" +
                 "    `kind`     INTEGER         NULL,\n" +
                 "    `fdate`    DATE            NOT NULL,\n" +
-                "            `mark`     INTEGER         NULL,\n" +
+                "    `mark`     INTEGER         NULL,\n" +
                 "    `note`     VARCHAR(255)    NULL,\n" +
                 "    `remark`   VARCHAR(255)    NULL,\n" +
                 "    `etc_n1`   INTEGER         NULL,\n" +
@@ -83,6 +85,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS category;");
         String query = "CREATE TABLE category\n" +
                 "            (\n" +
                 "    `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
@@ -98,12 +101,13 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS class;");
         String query = "CREATE TABLE class\n" +
                 "(\n" +
-                "        `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
+                "    `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `cls_no`    INTEGER        NOT NULL,\n" +
-                "            `cat_no`    INTEGER        NOT NULL,\n" +
-                "            `cla_name`  VARCHAR(45)    NOT NULL,\n" +
+                "    `cat_no`    INTEGER        NOT NULL,\n" +
+                "    `cla_name`  VARCHAR(45)    NOT NULL,\n" +
                 "    `short`     VARCHAR(45)    NULL,\n" +
                 "    `easy`      INTEGER        NULL,\n" +
                 "    `cl_use`    INTEGER        NULL,\n" +
@@ -119,6 +123,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS member_detail;");
         String query = "CREATE TABLE member_detail\n" +
                 "            (\n" +
                 "    `detail_id`  INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
@@ -135,13 +140,14 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS account_book;");
         String query = "CREATE TABLE account_book\n" +
                 "            (\n" +
                 "    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `bnk_id`      INTEGER         NOT NULL,\n" +
                 "    `what_id`     INTEGER         NOT NULL,\n" +
                 "    `ord_no`      INTEGER         NOT NULL,\n" +
-                "    `date`        DATE            NOT NULL,\n" +
+                "    `entry_date`        DATE            NOT NULL,\n" +
                 "    `io`          VARCHAR(45)     NOT NULL,\n" +
                 "    `cat_no`      INTEGER         NOT NULL,\n" +
                 "    `cls_no`      INTEGER         NOT NULL,\n" +
@@ -173,6 +179,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS donation_receipt;");
         String query = "CREATE TABLE donation_receipt\n" +
                 "            (\n" +
                 "    `rec_no`      INTEGER PRIMARY KEY    AUTOINCREMENT,\n" +
@@ -189,6 +196,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS subclass;");
         String query = "CREATE TABLE subclass\n" +
                 "            (\n" +
                 "    `rec_no`  INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
@@ -205,11 +213,12 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS donation_book;");
         String query = "CREATE TABLE donation_book\n" +
                 "            (\n" +
                 "    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `mbr_id`      INTEGER         NOT NULL,\n" +
-                "    `date`        DATE            NOT NULL,\n" +
+                "    `entry_date`        DATE            NOT NULL,\n" +
                 "    `io`          INTEGER         NULL,\n" +
                 "    `part_no`     INTEGER         NULL,\n" +
                 "    `qty`         INTEGER         NULL,\n" +
@@ -228,6 +237,7 @@ public class CreateTables {
         boolean result = false;
 
         dbMgr.open();
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS receipt_map;");
         String query = "CREATE TABLE receipt_map\n" +
                 "            (\n" +
                 "    `rec_no`           INTEGER    PRIMARY KEY    AUTOINCREMENT,\n" +

@@ -19,7 +19,7 @@ public class ImportCsv {
         this.dataRootPath = dataRootPath;
     }
 
-    public boolean importCategory() throws SQLException {
+    public boolean importCategory() {
         File cvs = new File(dataRootPath + "csv/category.csv");
         FileReader fr = null;
         try {
@@ -39,6 +39,8 @@ public class ImportCsv {
 
         dbMgr.open();
         try {
+            dbMgr.executeUpdate("DELETE FROM category; ");
+
             while ((line = br.readLine()) != null) {
                 String query = "INSERT INTO category (rec_no, cat_no, cat_name) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
@@ -69,26 +71,11 @@ public class ImportCsv {
         } catch (IOException e) {
             System.out.println("IO Error");
         }
-/*
-    `rec_no`   INTEGER         PRIMARY KEY    AUTOINCREMENT,
-    `mbr_id`   INTEGER         NOT NULL,
-    `cus_no`   VARCHAR(45)     NULL,
-    `name`     VARCHAR(255)    NOT NULL,
-    `company`  VARCHAR(255)    NULL,
-    `addr`     VARCHAR(255)    NULL,
-    `zip`      VARCHAR(45)     NULL,
-    `kind`     INTEGER         NULL,
-    `fdate`    DATE            NOT NULL,
-    `mark`     INTEGER         NULL,
-    `note`     VARCHAR(255)    NULL,
-    `remark`   VARCHAR(255)    NULL,
-    `etc_n1`   INTEGER         NULL,
-    `etc_n2`   INTEGER         NULL,
-    `etc_s1`   VARCHAR(45)     NULL,
-    `etc_s2`   VARCHAR(45)     NULL
- */
+
         dbMgr.open();
         try {
+            dbMgr.executeUpdate("DELETE FROM member; ");
+
             while ((line = br.readLine()) != null) {
                 String query = "INSERT INTO member (rec_no, mbr_id, cus_no, name, company, addr, zip, kind" +
                         ", fdate, mark, note, remark, etc_n1, etc_n2, etc_s1, etc_s2) VALUES (" + line + ");";
@@ -99,6 +86,235 @@ public class ImportCsv {
         } finally {
             dbMgr.close();
         }
+
+        return true;
+    }
+
+    public boolean importBankAccount() {
+        File cvs = new File(dataRootPath + "csv/bank_account.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(cvs);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : ");
+        }
+        BufferedReader br = new BufferedReader(fr);
+
+        // skip header (first line)
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IO Error");
+        }
+
+        dbMgr.open();
+        try {
+            dbMgr.executeUpdate("DELETE FROM bank_account;");
+
+            while ((line = br.readLine()) != null) {
+                String query = "INSERT INTO bank_account (rec_no, bnk_id, balance, last_date, id_name, act_no, open_date" +
+                        ", what_id, bank_type, addr, tel, cat_name, sort, kind, damdang, prank, pay_method" +
+                        ", pay_id_no, tax_method, norpt, add1, add2, zip, tel2, fax, item_use) VALUES (" + line + ");";
+                dbMgr.executeUpdate(query);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbMgr.close();
+        }
+
+        return true;
+    }
+
+    public boolean importClass() {
+        File cvs = new File(dataRootPath + "csv/class.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(cvs);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : ");
+        }
+        BufferedReader br = new BufferedReader(fr);
+
+        // skip header (first line)
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IO Error");
+        }
+
+        dbMgr.open();
+        try {
+            dbMgr.executeUpdate("DELETE FROM class;");
+
+            while ((line = br.readLine()) != null) {
+                String query = "INSERT INTO class (rec_no, cls_no, cat_no, cla_name, short, easy" +
+                        ", cl_use, tmp_str, tmp_num) VALUES (" + line + ");";
+                dbMgr.executeUpdate(query);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbMgr.close();
+        }
+
+        return true;
+    }
+
+    public boolean importMemberDetail() {
+        File cvs = new File(dataRootPath + "csv/member_detail.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(cvs);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : ");
+        }
+        BufferedReader br = new BufferedReader(fr);
+
+        // skip header (first line)
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IO Error");
+        }
+
+        dbMgr.open();
+        try {
+            dbMgr.executeUpdate("DELETE FROM member_detail;");
+
+            while ((line = br.readLine()) != null) {
+                String query = "INSERT INTO member_detail (detail_id, mbr_id, info, type) VALUES (" + line + ");";
+                dbMgr.executeUpdate(query);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbMgr.close();
+        }
+
+        return true;
+    }
+
+    public boolean importAccountBook() {
+        File cvs = new File(dataRootPath + "csv/account_book.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(cvs);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : ");
+        }
+        BufferedReader br = new BufferedReader(fr);
+
+        // skip header (first line)
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IO Error");
+        }
+
+        dbMgr.open();
+        try {
+            dbMgr.executeUpdate("DELETE FROM account_book;");
+
+            while ((line = br.readLine()) != null) {
+                String query = "INSERT INTO account_book (rec_no, bnk_id, what_id, ord_no, entry_date, io, cat_no, cls_no" +
+                        ", remark, item_price, price, tax_rate, tax_cost, balance, chk_no, relation, bnk_rid" +
+                        ", what_rid, slip, note, mark, bank_no, tmno, pay_method, tax_mark) VALUES (" + line + ");";
+                dbMgr.executeUpdate(query);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbMgr.close();
+        }
+
+        return true;
+    }
+
+    public boolean importSubClass() {
+        File cvs = new File(dataRootPath + "csv/subclass.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(cvs);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : ");
+        }
+        BufferedReader br = new BufferedReader(fr);
+
+        // skip header (first line)
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IO Error");
+        }
+
+        dbMgr.open();
+        try {
+            dbMgr.executeUpdate("DELETE FROM subclass;");
+
+            while ((line = br.readLine()) != null) {
+                String query = "INSERT INTO subclass (rec_no, cls_no, no, detail) VALUES (" + line + ");";
+                dbMgr.executeUpdate(query);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbMgr.close();
+        }
+
+        return true;
+    }
+
+    public boolean importDonationBook() {
+        File cvs = new File(dataRootPath + "csv/donation_book.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(cvs);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : ");
+        }
+        BufferedReader br = new BufferedReader(fr);
+
+        // skip header (first line)
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IO Error");
+        }
+
+        dbMgr.open();
+        try {
+            dbMgr.executeUpdate("DELETE FROM donation_book;");
+
+            while ((line = br.readLine()) != null) {
+                String query = "INSERT INTO donation_book (rec_no, mbr_id, entry_date, io, part_no, qty" +
+                        ", unit_price, price, item_name, ipkum, subject) VALUES (" + line + ");";
+                dbMgr.executeUpdate(query);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbMgr.close();
+        }
+
+        return true;
+    }
+
+    public boolean importAll() {
+        importMember();
+        importAccountBook();
+        importBankAccount();
+        importCategory();
+        importClass();
+        importDonationBook();
+        importMemberDetail();
+        importSubClass();
 
         return true;
     }

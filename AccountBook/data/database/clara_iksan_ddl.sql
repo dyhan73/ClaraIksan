@@ -90,7 +90,7 @@ CREATE TABLE account_book
     `bnk_id`      INTEGER         NOT NULL, 
     `what_id`     INTEGER         NOT NULL, 
     `ord_no`      INTEGER         NOT NULL, 
-    `date`        DATE            NOT NULL, 
+    `entry_date`  DATE            NOT NULL,
     `io`          VARCHAR(45)     NOT NULL, 
     `cat_no`      INTEGER         NOT NULL, 
     `cls_no`      INTEGER         NOT NULL, 
@@ -137,7 +137,7 @@ CREATE TABLE donation_book
 (
     `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT, 
     `mbr_id`      INTEGER         NOT NULL, 
-    `date`        DATE            NOT NULL, 
+    `entry_date`  DATE            NOT NULL,
     `io`          INTEGER         NULL,
     `part_no`     INTEGER         NULL, 
     `qty`         INTEGER         NULL, 
