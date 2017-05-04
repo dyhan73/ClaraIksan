@@ -12,7 +12,7 @@ import java.io.File;
 
 
 /**
- * Created by 1001235 on 2017. 4. 30..
+ * Created by Daeyoung Han on 2017. 4. 30..
  */
 public class ConfigDialog {
 

@@ -3,7 +3,7 @@ package tests.tps;
 import clara.iksan.convert.*;
 
 /**
- * Created by 1001235 on 2017. 4. 29..
+ * Created by Daeyoung Han on 2017. 4. 29..
  */
 public class TestTps2Csv {
     public static void main(String[] argv) {

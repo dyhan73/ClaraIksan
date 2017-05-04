@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 /**
- * Created by 1001235 on 2017. 5. 3..
+ * Created by Daeyoung Han on 2017. 5. 3..
  */
 public class AboutDialog {
 

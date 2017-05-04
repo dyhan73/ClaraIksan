@@ -1,7 +1,7 @@
 package tests.sqlite;
 
 /**
- * Created by dyhan on 2017. 4. 28..
+ * Created by Daeyoung Han on 2017. 4. 28..
  */
 import java.io.*;
 import java.sql.*;

@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * Created by dyhan on 2017. 4. 30..
+ * Created by Daeyoung Han on 2017. 4. 30..
  */
 public class BankStatement {
 

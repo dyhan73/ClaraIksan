@@ -3,7 +3,7 @@ package tests.sqlite;
 import clara.iksan.convert.ImportCsv;
 
 /**
- * Created by 1001235 on 2017. 4. 29..
+ * Created by Daeyoung Han on 2017. 4. 29..
  */
 public class TestImportCsv {
 

@@ -5,7 +5,7 @@ import clara.iksan.manager.DbManager;
 import java.io.*;
 
 /**
- * Created by dyhan on 2017. 4. 29..
+ * Created by Daeyoung Han on 2017. 4. 29..
  */
 public class ImportCsv {
 
@@ -79,6 +79,8 @@ public class ImportCsv {
                         ", fdate, mark, note, remark, etc_n1, etc_n2, etc_s1, etc_s2) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
+
+            dbMgr.executeUpdate("UPDATE member SET fdate = fdate + 2378858;");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -116,6 +118,8 @@ public class ImportCsv {
                         ", pay_id_no, tax_method, norpt, add1, add2, zip, tel2, fax, item_use) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
+
+            dbMgr.executeUpdate("UPDATE bank_account SET last_date = last_date + 2378858;");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -224,6 +228,8 @@ public class ImportCsv {
                         ", what_rid, slip, note, mark, bank_no, tmno, pay_method, tax_mark) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
+
+            dbMgr.executeUpdate("UPDATE account_book SET entry_date = entry_date + 2378858;");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -295,6 +301,8 @@ public class ImportCsv {
                         ", unit_price, price, item_name, ipkum, subject) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
+
+            dbMgr.executeUpdate("UPDATE donation_book SET entry_date = entry_date + 2378858;");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

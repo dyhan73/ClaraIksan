@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Created by dyhan on 2017. 4. 27..
+ * Created by Daeyoung Han on 2017. 4. 27..
  */
 public class PropertiesExample {
     private static String defaultPropertiesPath = "/Users/1001235/Documents/example.properties";

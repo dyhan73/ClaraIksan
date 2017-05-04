@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 import java.io.File;
 
 /**
- * Created by dyhan on 2017. 4. 30..
+ * Created by Daeyoung Han on 2017. 4. 30..
  */
 public class SearchAccountBook {
 

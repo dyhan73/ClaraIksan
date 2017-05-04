@@ -13,11 +13,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.commons.lang.SystemUtils;
 
 import java.io.IOException;
 
 /**
- * Created by dyhan on 2017. 4. 30..
+ * Created by Daeyoung Han on 2017. 4. 30..
  */
 public class MainApp extends Application {
 
@@ -34,6 +35,7 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] argv) {
+        System.out.println(SystemUtils.USER_DIR);
         launch(argv);
     }
 

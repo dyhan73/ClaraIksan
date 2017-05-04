@@ -3,7 +3,7 @@ package clara.iksan.convert;
 import clara.iksan.manager.DbManager;
 
 /**
- * Created by dyhan on 2017. 4. 29..
+ * Created by Daeyoung Han on 2017. 4. 29..
  */
 public class CreateTables {
 

@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import java.io.File;
 
 /**
- * Created by dyhan on 2017. 5. 3..
+ * Created by Daeyoung Han on 2017. 5. 3..
  */
 public class RootLayout {
 

@@ -3,7 +3,7 @@ package clara.iksan.model;
 import java.util.List;
 
 /**
- * Created by dyhan on 2017. 4. 30..
+ * Created by Daeyoung Han on 2017. 4. 30..
  */
 public class BankStatementWrapper {
     private List<BankStatement> bankStatements;
