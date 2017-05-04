@@ -1,4 +1,4 @@
-package clara.iksan.config;
+package clara.iksan.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +14,7 @@ import java.io.File;
 /**
  * Created by 1001235 on 2017. 4. 30..
  */
-public class ConfigDialogController {
+public class ConfigDialog {
 
     @FXML
     private TextField dataPath;

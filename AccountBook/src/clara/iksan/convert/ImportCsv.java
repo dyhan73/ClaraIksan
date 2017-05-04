@@ -1,10 +1,8 @@
 package clara.iksan.convert;
 
-import clara.iksan.util.DbManager;
+import clara.iksan.manager.DbManager;
 
 import java.io.*;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Created by dyhan on 2017. 4. 29..

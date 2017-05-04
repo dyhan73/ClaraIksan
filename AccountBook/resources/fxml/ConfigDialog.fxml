@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="150.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clara.iksan.config.ConfigDialogController">
+<AnchorPane prefHeight="150.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clara.iksan.controller.ConfigDialog">
    <children>
       <Label layoutX="27.0" layoutY="27.0" text="&quot;얼마에요? 2000&quot; data 폴더 위치">
          <font>

@@ -1,19 +1,18 @@
 package clara.iksan;
 
-import clara.iksan.account.SearchAccountBookController;
-import clara.iksan.config.ConfigDialogController;
-import clara.iksan.model.BankStatement;
+import clara.iksan.controller.AboutDialog;
+import clara.iksan.controller.RootLayout;
+import clara.iksan.controller.SearchAccountBook;
+import clara.iksan.controller.ConfigDialog;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 
@@ -23,7 +22,7 @@ import java.io.IOException;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private BorderPane searchAccountBook;
+    private BorderPane rootLayout;
 
     public MainApp() {
         // TODO : set start date of search
@@ -44,28 +43,48 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("입출금 내역 조회");
 
         // set Application icon
-        this.primaryStage.getIcons().add(new Image("file:resources/images/Saint_Clara_Icon.jpg"));
+        this.primaryStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/Saint_Clara_Icon.jpg")));
+
+        initRootLayout();
 
         showSearchAccountBook();
 
+    }
+
+    private void initRootLayout() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/RootLayout.fxml"));
+            rootLayout = loader.load();
+
+            // show scene which include top layout
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+
+            // give MainApp access privilege to controller
+            RootLayout controller = loader.getController();
+            controller.setMainApp(this);
+
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showSearchAccountBook() {
         try {
             // get main layout from fxml
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("account/SearchAccountBook.fxml"));
-            searchAccountBook = (BorderPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("/fxml/SearchAccountBook.fxml"));
+            VBox searchAccountBook = loader.load();
 
-            // show scene which include main layout
-            Scene scene = new Scene(searchAccountBook);
-            primaryStage.setScene(scene);
+            // set inner scene
+            rootLayout.setCenter(searchAccountBook);
 
             // give MainApp access privilege to controller
-            SearchAccountBookController controller = loader.getController();
+            SearchAccountBook controller = loader.getController();
             controller.setMainApp(this);
 
-            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,7 +94,7 @@ public class MainApp extends Application {
         try {
             // get main layout from fxml
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("config/ConfigDialog.fxml"));
+            loader.setLocation(MainApp.class.getResource("/fxml/ConfigDialog.fxml"));
             AnchorPane dialog = (AnchorPane) loader.load();
 
             // create dialog (modal)
@@ -87,7 +106,7 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // set person on controller
-            ConfigDialogController controller = loader.getController();
+            ConfigDialog controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
             // show dialog and wait
@@ -97,6 +116,34 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+
+    public void showAboutDialog() {
+        try {
+            // get main layout from fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/AboutDialog.fxml"));
+            AnchorPane dialog = (AnchorPane) loader.load();
+
+            // create dialog (modal)
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("About");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(dialog);
+            dialogStage.setScene(scene);
+
+            // set stage
+            AboutDialog controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+
+            // show dialog and wait
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Stage getPrimaryStage() { return primaryStage; }
 
 

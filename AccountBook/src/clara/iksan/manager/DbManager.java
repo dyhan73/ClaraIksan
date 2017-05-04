@@ -1,4 +1,4 @@
-package clara.iksan.util;
+package clara.iksan.manager;
 
 import clara.iksan.model.BankStatement;
 import javafx.collections.FXCollections;
@@ -92,14 +92,17 @@ public class DbManager {
             Statement stmt = this.connection.createStatement();
             ResultSet rs = null;
 
-            rs = stmt.executeQuery("" +
-                    "SELECT DATE(ab.entry_date + 2378858) AS entry_date, ba.id_name, ca.cat_name, cl.cla_name, ab.price, ab.remark, ab.note\n" +
+            String query = "SELECT DATE(ab.entry_date + 2378858) AS entry_date, ba.id_name, ca.cat_name, cl.cla_name, ab.price, ab.remark, ab.note\n" +
                     "FROM account_book ab\n" +
                     "  JOIN bank_account ba ON ab.bnk_id = ba.bnk_id\n" +
                     "  JOIN category ca ON ab.cat_no = ca.cat_no\n" +
                     "  JOIN class cl ON ab.cls_no = cl.cls_no\n" +
                     "WHERE ab.bnk_id != 3 AND ab.remark LIKE '%" + searchKeyword + "%'\n" +
-                    "ORDER BY entry_date;");
+                    "ORDER BY entry_date;";
+
+            System.out.println(query);
+
+            rs = stmt.executeQuery(query);
 
             while (rs.next()) {
                 BankStatement bankStatement = new BankStatement(rs.getString("entry_date"),
@@ -111,6 +114,7 @@ public class DbManager {
                         rs.getString("note"));
 
                 data.add(bankStatement);
+                System.out.println(bankStatement.getEntryDate() + ", " + bankStatement.getRemark());
             }
 
             rs.close();
