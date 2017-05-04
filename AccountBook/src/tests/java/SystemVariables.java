@@ -33,6 +33,7 @@ public class SystemVariables {
 
         System.out.println(prefs.get("currentPath", null));
 
+
     }
 
     private boolean testFile() {

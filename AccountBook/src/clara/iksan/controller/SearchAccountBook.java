@@ -78,6 +78,7 @@ public class SearchAccountBook {
     private void handleSearch() {
         String searchKeyword = searchTextField.getText();
         //String startDate = startDatePicker.getConverter().toString();
+
         //String account = accountChoiceBox.getSelectionModel().getSelectedItem().toString();
 
         bankStatementData.clear();
