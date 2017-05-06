@@ -3,19 +3,36 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="150.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clara.iksan.controller.ConfigDialog">
+<AnchorPane prefHeight="340.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clara.iksan.controller.ConfigDialog">
    <children>
-      <Label layoutX="27.0" layoutY="27.0" text="&quot;얼마에요? 2000&quot; data 폴더 위치">
+      <Label layoutX="185.0" layoutY="34.0" text="설정 변경">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="dataPath" layoutX="27.0" layoutY="62.0" prefHeight="26.0" prefWidth="336.0" />
-      <Button layoutX="363.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleChooser" text="..." />
-      <Button layoutX="184.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="100.0" text="취소" />
-      <Button layoutX="293.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleSave" prefWidth="100.0" text="저장하기" />
+      <TextField fx:id="tpsPath" layoutX="27.0" layoutY="110.0" prefHeight="26.0" prefWidth="336.0" />
+      <Button layoutX="363.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleTpsChooser" text="..." />
+      <Button layoutX="182.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="100.0" text="취소" />
+      <Button layoutX="291.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleSave" prefWidth="100.0" text="저장하기" />
+      <Label layoutX="27.0" layoutY="87.0" text="&quot;얼마에요&quot; data 폴더 위치" />
+      <TextField fx:id="dataPath" layoutX="28.0" layoutY="180.0" prefHeight="26.0" prefWidth="336.0" />
+      <Button layoutX="364.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleDataChooser" text="..." />
+      <Label layoutX="28.0" layoutY="157.0" text="클라라 익산 data 폴더 위치" />
+      <Label layoutX="31.0" layoutY="227.0" text="데이터 동기화 일시" />
+      <Label fx:id="lastUpdate" layoutX="52.0" layoutY="251.0" text="2017-01-01T00:00:00.000">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="117.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/config-icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

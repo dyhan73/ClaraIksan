@@ -2,6 +2,8 @@ package clara.iksan.manager;
 
 import clara.iksan.MainApp;
 
+import java.io.File;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.prefs.Preferences;
 
@@ -17,13 +19,34 @@ public class PrefManager {
     public PrefManager() {
         // check preferences
         prefs = Preferences.userNodeForPackage(MainApp.class);
-        tpsPath = prefs.get("tpsPath", null);
-        dataPath = prefs.get("dataPath", null);
+        tpsPath = prefs.get("tpsPath", "C:/m7/data");
+        dataPath = prefs.get("dataPath", System.getProperty("user.home") + "/Documents/ClaraIksan/data");
         lastUpdate = prefs.get("lastUpdate", null);
     }
 
     public String toString() {
         return String.format("tpsPath : %s, dataPath : %s, lastUpdate : %s", tpsPath, dataPath, lastUpdate);
+    }
+
+    /**
+     * csv directory is under the data path
+     * csv directory is generated if needed
+     * @return full path of csv
+     */
+    public String getCsvPath() {
+        if (tpsPath.isEmpty() || dataPath.isEmpty()) return null;
+        String csvPath = dataPath + "/csv";
+        File file = new File(csvPath);
+        file.mkdirs();
+        return csvPath;
+    }
+
+    public String getDbFile() {
+        if (dataPath.isEmpty()) return null;
+        String dbPath = dataPath + "/database";
+        File file = new File(dbPath);
+        file.mkdirs();
+        return dbPath + "/clara_iksan.db";
     }
 
     public void store() {
@@ -38,7 +61,6 @@ public class PrefManager {
 
     public void setTpsPath(String tpsPath) {
         this.tpsPath = tpsPath;
-        prefs.put("tpsPath", this.tpsPath);
     }
 
     public String getDataPath() {
@@ -47,15 +69,19 @@ public class PrefManager {
 
     public void setDataPath(String dataPath) {
         this.dataPath = dataPath;
-        prefs.put("dataPath", this.dataPath);
+
+        // create csv and database directory
+        File file = new File(dataPath + "/csv");
+        file.mkdirs();
+        file = new File(dataPath + "/database");
+        file.mkdirs();
     }
 
-    public String getLastUpdate() {
-        return lastUpdate;
+    public LocalDateTime getLastUpdate() {
+        return LocalDateTime.parse(this.lastUpdate);
     }
 
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
-        prefs.put("lastUpdate", this.lastUpdate);
+    public void setLastUpdate() {
+        this.lastUpdate = LocalDateTime.now().toString();
     }
 }
