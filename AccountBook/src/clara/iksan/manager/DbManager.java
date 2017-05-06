@@ -93,7 +93,7 @@ public class DbManager {
             Statement stmt = this.connection.createStatement();
             ResultSet rs = null;
 
-            String query = "SELECT DATE(ab.entry_date + 2378858) AS entry_date, ba.id_name, ca.cat_name, cl.cla_name, ab.price, ab.remark, ab.note\n" +
+            String query = "SELECT DATE(ab.entry_date) AS entry_date, ba.id_name, ca.cat_name, cl.cla_name, ab.price, ab.remark, ab.note\n" +
                     "FROM account_book ab\n" +
                     "  JOIN bank_account ba ON ab.bnk_id = ba.bnk_id\n" +
                     "  JOIN category ca ON ab.cat_no = ca.cat_no\n" +
