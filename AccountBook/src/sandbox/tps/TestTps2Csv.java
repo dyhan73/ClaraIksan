@@ -1,4 +1,4 @@
-package tests.tps;
+package sandbox.tps;
 
 import clara.iksan.convert.*;
 

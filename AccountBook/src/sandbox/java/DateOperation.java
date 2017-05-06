@@ -1,9 +1,7 @@
-package tests.java;
+package sandbox.java;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
-import java.util.Locale;
 
 /**
  * Created by Daeyoung Han on 2017. 5. 4..

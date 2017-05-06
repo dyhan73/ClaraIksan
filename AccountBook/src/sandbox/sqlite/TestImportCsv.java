@@ -1,4 +1,4 @@
-package tests.sqlite;
+package sandbox.sqlite;
 
 import clara.iksan.convert.ImportCsv;
 

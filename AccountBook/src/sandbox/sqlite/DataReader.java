@@ -1,9 +1,8 @@
-package tests.sqlite;
+package sandbox.sqlite;
 
 /**
  * Created by Daeyoung Han on 2017. 4. 28..
  */
-import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

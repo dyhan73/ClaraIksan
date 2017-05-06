@@ -1,4 +1,4 @@
-package tests.java;
+package sandbox.java;
 
 import java.io.*;
 import java.util.HashMap;

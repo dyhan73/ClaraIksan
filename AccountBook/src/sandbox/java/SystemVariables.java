@@ -1,4 +1,4 @@
-package tests.java;
+package sandbox.java;
 
 import org.apache.commons.lang.SystemUtils;
 
