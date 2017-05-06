@@ -21,8 +21,8 @@ public class DataReader {
         }
     }
 
-    public DataReader(String databaseFileName) {
-        this.dbFileName = databaseFileName;
+    public DataReader(String dbFileName) {
+        this.dbFileName = dbFileName;
     }
 
     public boolean open() {

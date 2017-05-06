@@ -31,13 +31,15 @@ public class ConfigDialog {
      * Get default paths from Preferences
      */
     public ConfigDialog() {
-        prefManager = new PrefManager();
-        tpsPath.setText(prefManager.getTpsPath());
-        dataPath.setText(prefManager.getDataPath());
+
     }
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
+        prefManager = new PrefManager();
+        tpsPath.setText(prefManager.getTpsPath());
+        dataPath.setText(prefManager.getDataPath());
+
     }
 
     @FXML
@@ -45,7 +47,7 @@ public class ConfigDialog {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(dialogStage);
         if (selectedDirectory == null) {
-            tpsPath.setText("No Directory is selected");
+            tpsPath.setText("Not selected yet!");
         } else {
             tpsPath.setText(selectedDirectory.getAbsolutePath());
             prefManager.setTpsPath(selectedDirectory.getAbsolutePath());
@@ -57,7 +59,7 @@ public class ConfigDialog {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(dialogStage);
         if (selectedDirectory == null) {
-            dataPath.setText("No Directory is selected");
+            dataPath.setText("Not selected yet!");
         } else {
             dataPath.setText(selectedDirectory.getAbsolutePath());
             prefManager.setDataPath(selectedDirectory.getAbsolutePath());

@@ -20,8 +20,8 @@ public class PrefManager {
         // check preferences
         prefs = Preferences.userNodeForPackage(MainApp.class);
         tpsPath = prefs.get("tpsPath", "C:/m7/data");
-        dataPath = prefs.get("dataPath", System.getProperty("user.home") + "/Documents/ClaraIksan/data");
-        lastUpdate = prefs.get("lastUpdate", null);
+        dataPath = prefs.get("dataPath", "Not selected yet!");
+        lastUpdate = prefs.get("lastUpdate", "Not updated yet!");
     }
 
     public String toString() {
@@ -43,7 +43,7 @@ public class PrefManager {
 
     public String getDbFile() {
         if (dataPath.isEmpty()) return null;
-        String dbPath = dataPath + "/database";
+        String dbPath = dataPath;
         File file = new File(dbPath);
         file.mkdirs();
         return dbPath + "/clara_iksan.db";
@@ -61,6 +61,7 @@ public class PrefManager {
 
     public void setTpsPath(String tpsPath) {
         this.tpsPath = tpsPath;
+        prefs.put("tpsPath", this.tpsPath);
     }
 
     public String getDataPath() {
@@ -70,11 +71,11 @@ public class PrefManager {
     public void setDataPath(String dataPath) {
         this.dataPath = dataPath;
 
-        // create csv and database directory
+        // create csv directory
         File file = new File(dataPath + "/csv");
         file.mkdirs();
-        file = new File(dataPath + "/database");
-        file.mkdirs();
+
+        prefs.put("dataPath", this.dataPath);
     }
 
     public LocalDateTime getLastUpdate() {

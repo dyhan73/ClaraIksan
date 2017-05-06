@@ -10,15 +10,15 @@ import java.io.*;
 public class ImportCsv {
 
     DbManager dbMgr = null;
-    String dataRootPath = null; // "/Users/1001235/MyDev/ws_github/ClaraIksan/AccountBook/data/"
+    String dataPath = null;
 
-    public ImportCsv(String dataRootPath) {
+    public ImportCsv(String dataPath) {
         this.dbMgr = new DbManager();
-        this.dataRootPath = dataRootPath;
+        this.dataPath = dataPath;
     }
 
     public boolean importCategory() {
-        File cvs = new File(dataRootPath + "csv/category.csv");
+        File cvs = new File(dataPath + "/csv/category.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -53,7 +53,7 @@ public class ImportCsv {
     }
 
     public boolean importMember() {
-        File cvs = new File(dataRootPath + "csv/member.csv");
+        File cvs = new File(dataPath + "/csv/member.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -91,7 +91,7 @@ public class ImportCsv {
     }
 
     public boolean importBankAccount() {
-        File cvs = new File(dataRootPath + "csv/bank_account.csv");
+        File cvs = new File(dataPath + "/csv/bank_account.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -130,7 +130,7 @@ public class ImportCsv {
     }
 
     public boolean importClass() {
-        File cvs = new File(dataRootPath + "csv/class.csv");
+        File cvs = new File(dataPath + "/csv/class.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -166,7 +166,7 @@ public class ImportCsv {
     }
 
     public boolean importMemberDetail() {
-        File cvs = new File(dataRootPath + "csv/member_detail.csv");
+        File cvs = new File(dataPath + "/csv/member_detail.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -201,7 +201,7 @@ public class ImportCsv {
     }
 
     public boolean importAccountBook() {
-        File cvs = new File(dataRootPath + "csv/account_book.csv");
+        File cvs = new File(dataPath + "/csv/account_book.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -240,7 +240,7 @@ public class ImportCsv {
     }
 
     public boolean importSubClass() {
-        File cvs = new File(dataRootPath + "csv/subclass.csv");
+        File cvs = new File(dataPath + "/csv/subclass.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -275,7 +275,7 @@ public class ImportCsv {
     }
 
     public boolean importDonationBook() {
-        File cvs = new File(dataRootPath + "csv/donation_book.csv");
+        File cvs = new File(dataPath + "/csv/donation_book.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -321,6 +321,8 @@ public class ImportCsv {
         importDonationBook();
         importMemberDetail();
         importSubClass();
+
+        System.out.println("Completed : All CSV files are imported to DB");
 
         return true;
     }

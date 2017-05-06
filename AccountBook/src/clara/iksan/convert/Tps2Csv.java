@@ -67,7 +67,7 @@ public class Tps2Csv {
         private boolean verbose = false;
     }
 
-    public boolean convertAll(String dataRootPath) {
+    public boolean convertAll(String tpsPath, String dataPath) {
         Args params = new Args();
         JCommander cmd = new JCommander(params);
 
@@ -75,43 +75,43 @@ public class Tps2Csv {
         params.tpsEncoding = "CP949";
 
         try {
-            params.sourceFile = new File(dataRootPath + "tps/MG001.TPS");
-            params.targetFile = new File(dataRootPath + "csv/subclass.csv");
+            params.sourceFile = new File(tpsPath + "/MG001.TPS");
+            params.targetFile = new File(dataPath + "/csv/subclass.csv");
             parseFile(params);
             System.out.println("Success : MG001.TPS to subclass.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/MF001.TPS");
-            params.targetFile = new File(dataRootPath + "csv/class.csv");
+            params.sourceFile = new File(tpsPath + "/MF001.TPS");
+            params.targetFile = new File(dataPath + "/csv/class.csv");
             parseFile(params);
             System.out.println("Success : MF001.TPS to class.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/MB001.TPS");
-            params.targetFile = new File(dataRootPath + "csv/account_book.csv");
+            params.sourceFile = new File(tpsPath + "/MB001.TPS");
+            params.targetFile = new File(dataPath + "/csv/account_book.csv");
             parseFile(params);
             System.out.println("Success : MB001.TPS to account_book.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/MH001.TPS");
-            params.targetFile = new File(dataRootPath + "csv/category.csv");
+            params.sourceFile = new File(tpsPath + "/MH001.TPS");
+            params.targetFile = new File(dataPath + "/csv/category.csv");
             parseFile(params);
             System.out.println("Success : MH001.TPS to category.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/PHONE.TPS");
-            params.targetFile = new File(dataRootPath + "csv/member_detail.csv");
+            params.sourceFile = new File(tpsPath + "/PHONE.TPS");
+            params.targetFile = new File(dataPath + "/csv/member_detail.csv");
             parseFile(params);
             System.out.println("Success : PHONE.TPS to member_detail.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/MA001.TPS");
-            params.targetFile = new File(dataRootPath + "csv/bank_account.csv");
+            params.sourceFile = new File(tpsPath + "/MA001.TPS");
+            params.targetFile = new File(dataPath + "/csv/bank_account.csv");
             parseFile(params);
             System.out.println("Success : MA001.TPS to bank_account.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/MBOOK.TPS");
-            params.targetFile = new File(dataRootPath + "csv/donation_book.csv");
+            params.sourceFile = new File(tpsPath + "/MBOOK.TPS");
+            params.targetFile = new File(dataPath + "/csv/donation_book.csv");
             parseFile(params);
             System.out.println("Success : MBOOK.TPS to donation_book.csv");
 
-            params.sourceFile = new File(dataRootPath + "tps/MAN.TPS");
-            params.targetFile = new File(dataRootPath + "csv/member.csv");
+            params.sourceFile = new File(tpsPath + "/MAN.TPS");
+            params.targetFile = new File(dataPath + "/csv/member.csv");
             parseFile(params);
             System.out.println("Success : MAN.TPS to member.csv");
             System.out.println("Completed!");

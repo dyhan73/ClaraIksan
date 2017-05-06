@@ -23,7 +23,8 @@ public class DbManager {
     }
 
     public DbManager() {
-        this.dbFileName = "/Users/1001235/MyDev/ws_github/ClaraIksan/AccountBook/data/database/clara_iksan.db";
+        PrefManager prefManager = new PrefManager();
+        this.dbFileName = prefManager.getDbFile();
     }
 
     public boolean open() {
