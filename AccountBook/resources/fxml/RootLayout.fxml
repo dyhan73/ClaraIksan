@@ -13,21 +13,26 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="파일">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleReload" text="데이터 다시읽기" />
                   <MenuItem mnemonicParsing="false" onAction="#handleConfig" text="설정" />
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="종료" />
             </items>
           </Menu>
-          <Menu disable="true" mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="보고서">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="계정 과목 집계표" />
+                  <MenuItem mnemonicParsing="false" text="계정 과목 명세서" />
+                  <MenuItem mnemonicParsing="false" text="계정별 원장" />
+                  <MenuItem mnemonicParsing="false" text="기간별 출납보고" />
+                  <MenuItem mnemonicParsing="false" text="기부금 명단" />
+                  <MenuItem mnemonicParsing="false" text="고객 정보" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" />
             </items>
           </Menu>
         </menus>

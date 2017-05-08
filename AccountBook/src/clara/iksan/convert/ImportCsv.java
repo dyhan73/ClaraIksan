@@ -40,7 +40,8 @@ public class ImportCsv {
             dbMgr.executeUpdate("DELETE FROM category; ");
 
             while ((line = br.readLine()) != null) {
-                String query = "INSERT INTO category (rec_no, cat_no, cat_name) VALUES (" + line + ");";
+                line = line.replaceFirst("^.*?,", "");
+                String query = "INSERT INTO category (cat_no, cat_name) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
         } catch (Exception e) {
@@ -75,7 +76,8 @@ public class ImportCsv {
             dbMgr.executeUpdate("DELETE FROM member; ");
 
             while ((line = br.readLine()) != null) {
-                String query = "INSERT INTO member (rec_no, mbr_id, cus_no, name, company, addr, zip, kind" +
+                line = line.replaceFirst("^.*?,", "");
+                String query = "INSERT INTO member (mbr_id, cus_no, name, company, addr, zip, kind" +
                         ", fdate, mark, note, remark, etc_n1, etc_n2, etc_s1, etc_s2) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
@@ -113,7 +115,8 @@ public class ImportCsv {
             dbMgr.executeUpdate("DELETE FROM bank_account;");
 
             while ((line = br.readLine()) != null) {
-                String query = "INSERT INTO bank_account (rec_no, bnk_id, balance, last_date, id_name, act_no, open_date" +
+                line = line.replaceFirst("^.*?,", "");
+                String query = "INSERT INTO bank_account (bnk_id, balance, last_date, id_name, act_no, open_date" +
                         ", what_id, bank_type, addr, tel, cat_name, sort, kind, damdang, prank, pay_method" +
                         ", pay_id_no, tax_method, norpt, add1, add2, zip, tel2, fax, item_use) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
@@ -152,7 +155,8 @@ public class ImportCsv {
             dbMgr.executeUpdate("DELETE FROM class;");
 
             while ((line = br.readLine()) != null) {
-                String query = "INSERT INTO class (rec_no, cls_no, cat_no, cla_name, short, easy" +
+                line = line.replaceFirst("^.*?,", "");
+                String query = "INSERT INTO class (cls_no, cat_no, cla_name, short, easy" +
                         ", cl_use, tmp_str, tmp_num) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
@@ -223,7 +227,8 @@ public class ImportCsv {
             dbMgr.executeUpdate("DELETE FROM account_book;");
 
             while ((line = br.readLine()) != null) {
-                String query = "INSERT INTO account_book (rec_no, bnk_id, what_id, ord_no, entry_date, io, cat_no, cls_no" +
+                line = line.replaceFirst("^.*?,", "");
+                String query = "INSERT INTO account_book (bnk_id, what_id, ord_no, entry_date, io, cat_no, cls_no" +
                         ", remark, item_price, price, tax_rate, tax_cost, balance, chk_no, relation, bnk_rid" +
                         ", what_rid, slip, note, mark, bank_no, tmno, pay_method, tax_mark) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
@@ -262,7 +267,8 @@ public class ImportCsv {
             dbMgr.executeUpdate("DELETE FROM subclass;");
 
             while ((line = br.readLine()) != null) {
-                String query = "INSERT INTO subclass (rec_no, cls_no, no, detail) VALUES (" + line + ");";
+                line = line.replaceFirst("^.*?,", "");
+                String query = "INSERT INTO subclass (cls_no, no, detail) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
         } catch (Exception e) {

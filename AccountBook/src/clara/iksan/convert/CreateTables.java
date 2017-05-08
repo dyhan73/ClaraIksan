@@ -20,8 +20,7 @@ public class CreateTables {
         dbMgr.executeUpdate("DROP TABLE IF EXISTS bank_account;");
         String query = "CREATE TABLE bank_account\n" +
                 "            (\n" +
-                "    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
-                "    `bnk_id`      INTEGER         NOT NULL,\n" +
+                "    `bnk_id`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `balance`     INTEGER         NOT NULL,\n" +
                 "    `last_date`   DATE            NOT NULL,\n" +
                 "    `id_name`     VARCHAR(45)     NOT NULL,\n" +
@@ -59,8 +58,7 @@ public class CreateTables {
         dbMgr.executeUpdate("DROP TABLE IF EXISTS member;");
         String query = "CREATE TABLE member\n" +
                 "            (\n" +
-                "    `rec_no`   INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
-                "    `mbr_id`   INTEGER         NOT NULL,\n" +
+                "    `mbr_id`   INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `cus_no`   VARCHAR(45)     NULL,\n" +
                 "    `name`     VARCHAR(255)    NOT NULL,\n" +
                 "    `company`  VARCHAR(255)    NULL,\n" +
@@ -88,8 +86,7 @@ public class CreateTables {
         dbMgr.executeUpdate("DROP TABLE IF EXISTS category;");
         String query = "CREATE TABLE category\n" +
                 "            (\n" +
-                "    `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
-                "    `cat_no`    INTEGER        NOT NULL,\n" +
+                "    `cat_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `cat_name`  VARCHAR(40)    NOT NULL\n" +
                 ");";
         result = dbMgr.executeUpdate(query);
@@ -104,8 +101,7 @@ public class CreateTables {
         dbMgr.executeUpdate("DROP TABLE IF EXISTS class;");
         String query = "CREATE TABLE class\n" +
                 "(\n" +
-                "    `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
-                "    `cls_no`    INTEGER        NOT NULL,\n" +
+                "    `cls_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `cat_no`    INTEGER        NOT NULL,\n" +
                 "    `cla_name`  VARCHAR(45)    NOT NULL,\n" +
                 "    `short`     VARCHAR(45)    NULL,\n" +
@@ -143,11 +139,10 @@ public class CreateTables {
         dbMgr.executeUpdate("DROP TABLE IF EXISTS account_book;");
         String query = "CREATE TABLE account_book\n" +
                 "            (\n" +
-                "    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
+                "    `ord_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `bnk_id`      INTEGER         NOT NULL,\n" +
                 "    `what_id`     INTEGER         NOT NULL,\n" +
-                "    `ord_no`      INTEGER         NOT NULL,\n" +
-                "    `entry_date`        DATE            NOT NULL,\n" +
+                "    `entry_date`  DATE            NOT NULL,\n" +
                 "    `io`          VARCHAR(45)     NOT NULL,\n" +
                 "    `cat_no`      INTEGER         NOT NULL,\n" +
                 "    `cls_no`      INTEGER         NOT NULL,\n" +
@@ -198,11 +193,11 @@ public class CreateTables {
         dbMgr.open();
         dbMgr.executeUpdate("DROP TABLE IF EXISTS subclass;");
         String query = "CREATE TABLE subclass\n" +
-                "            (\n" +
-                "    `rec_no`  INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
+                "(\n" +
                 "    `cls_no`  INTEGER        NOT NULL,\n" +
-                "    `no`      INTEGER        NOT NULL,\n" +
-                "    `detail`  VARCHAR(45)    NOT NULL\n" +
+                "    `no`      INTEGER        NOT NULL, \n" +
+                "    `detail`  VARCHAR(45)    NOT NULL,\n" +
+                "    PRIMARY KEY (`cls_no`, `no`)\n" +
                 ");";
         result = dbMgr.executeUpdate(query);
         dbMgr.close();

@@ -3,8 +3,7 @@ BEGIN TRANSACTION;
 
 CREATE TABLE bank_account
 (
-    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT, 
-    `bnk_id`      INTEGER         NOT NULL, 
+    `bnk_id`      INTEGER         PRIMARY KEY    AUTOINCREMENT,
     `balance`     INTEGER         NOT NULL, 
     `last_date`   DATE            NOT NULL, 
     `id_name`     VARCHAR(45)     NOT NULL, 
@@ -34,8 +33,7 @@ CREATE TABLE bank_account
 
 CREATE TABLE member
 (
-    `rec_no`   INTEGER         PRIMARY KEY    AUTOINCREMENT, 
-    `mbr_id`   INTEGER         NOT NULL, 
+    `mbr_id`   INTEGER         PRIMARY KEY    AUTOINCREMENT,
     `cus_no`   VARCHAR(45)     NULL, 
     `name`     VARCHAR(255)    NOT NULL, 
     `company`  VARCHAR(255)    NULL, 
@@ -55,16 +53,14 @@ CREATE TABLE member
 
 CREATE TABLE category
 (
-    `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT, 
-    `cat_no`    INTEGER        NOT NULL, 
+    `cat_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,
     `cat_name`  VARCHAR(40)    NOT NULL
 );
 
 
 CREATE TABLE class
 (
-    `rec_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT, 
-    `cls_no`    INTEGER        NOT NULL, 
+    `cls_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,
     `cat_no`    INTEGER        NOT NULL, 
     `cla_name`  VARCHAR(45)    NOT NULL, 
     `short`     VARCHAR(45)    NULL, 
@@ -86,10 +82,9 @@ CREATE TABLE member_detail
 
 CREATE TABLE account_book
 (
-    `rec_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT, 
+    `ord_no`      INTEGER         PRIMARY KEY    AUTOINCREMENT,
     `bnk_id`      INTEGER         NOT NULL, 
-    `what_id`     INTEGER         NOT NULL, 
-    `ord_no`      INTEGER         NOT NULL, 
+    `what_id`     INTEGER         NOT NULL,
     `entry_date`  DATE            NOT NULL,
     `io`          VARCHAR(45)     NOT NULL, 
     `cat_no`      INTEGER         NOT NULL, 
@@ -113,6 +108,7 @@ CREATE TABLE account_book
     `tax_mark`    VARCHAR(45)     NULL, 
     `mbr_id`      INTEGER         NULL
 );
+CREATE INDEX ab_idx ON account_book (`entry_date`);
 
 
 CREATE TABLE donation_receipt
@@ -126,10 +122,10 @@ CREATE TABLE donation_receipt
 
 CREATE TABLE subclass
 (
-    `rec_no`  INTEGER        PRIMARY KEY    AUTOINCREMENT, 
-    `cls_no`  INTEGER        NOT NULL, 
+    `cls_no`  INTEGER        NOT NULL,
     `no`      INTEGER        NOT NULL, 
-    `detail`  VARCHAR(45)    NOT NULL
+    `detail`  VARCHAR(45)    NOT NULL,
+    PRIMARY KEY (`cls_no`, `no`)
 );
 
 
