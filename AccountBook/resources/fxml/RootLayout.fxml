@@ -16,10 +16,17 @@
           <Menu mnemonicParsing="false" text="파일">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleReload" text="데이터 다시읽기" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleBackup" text="데이터 백업" />
                   <MenuItem mnemonicParsing="false" onAction="#handleConfig" text="설정" />
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="종료" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="항목관리">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleCategory" text="대분류 관리" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleClassItem" text="계정과목 관리" />
+               </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="보고서">
             <items>
               <MenuItem mnemonicParsing="false" text="계정 과목 집계표" />
@@ -32,7 +39,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleAbout" />
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="자료 검증" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
             </items>
           </Menu>
         </menus>
