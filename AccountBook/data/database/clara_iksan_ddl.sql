@@ -100,7 +100,7 @@ CREATE TABLE account_book
     `bnk_rid`     INTEGER         NOT NULL, 
     `what_rid`    INTEGER         NOT NULL, 
     `slip`        VARCHAR(45)     NULL, 
-    `note`        VARCHAR(45)     NULL, 
+    `note`        VARCHAR(255)     NULL,
     `mark`        VARCHAR(45)     NULL, 
     `bank_no`     INTEGER         NULL, 
     `tmno`        INTEGER         NULL, 

@@ -157,7 +157,7 @@ public class CreateTables {
                 "    `bnk_rid`     INTEGER         NOT NULL,\n" +
                 "    `what_rid`    INTEGER         NOT NULL,\n" +
                 "    `slip`        VARCHAR(45)     NULL,\n" +
-                "    `note`        VARCHAR(45)     NULL,\n" +
+                "    `note`        VARCHAR(255)     NULL,\n" +
                 "    `mark`        VARCHAR(45)     NULL,\n" +
                 "    `bank_no`     INTEGER         NULL,\n" +
                 "    `tmno`        INTEGER         NULL,\n" +
