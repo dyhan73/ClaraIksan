@@ -1,17 +1,12 @@
 package clara.iksan.controller;
 
 import clara.iksan.MainApp;
-import clara.iksan.convert.CreateTables;
-import clara.iksan.convert.ImportCsv;
-import clara.iksan.convert.Tps2Csv;
 import clara.iksan.model.BankStatement;
 import clara.iksan.manager.DbManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.File;
 
 /**
  * Created by Daeyoung Han on 2017. 4. 30..
@@ -62,8 +57,8 @@ public class SearchAccountBook {
     private void initialize() {
         entryDateColumn.setCellValueFactory(cellData -> cellData.getValue().entryDateProperty());
         accountColumn.setCellValueFactory(cellData -> cellData.getValue().accountProperty());
-        classNameColumn.setCellValueFactory(cellData -> cellData.getValue().classNameProperty());
-        subClassNameColumn.setCellValueFactory(cellData -> cellData.getValue().subClassNameProperty());
+        classNameColumn.setCellValueFactory(cellData -> cellData.getValue().groupNameProperty());
+        subClassNameColumn.setCellValueFactory(cellData -> cellData.getValue().groupDetailNameProperty());
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         remarkColumn.setCellValueFactory(cellData -> cellData.getValue().remarkProperty());
         noteColumn.setCellValueFactory(cellData -> cellData.getValue().noteProperty());

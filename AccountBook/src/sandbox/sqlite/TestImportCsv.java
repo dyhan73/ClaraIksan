@@ -16,7 +16,7 @@ public class TestImportCsv {
 //        imp.importAccountBook();
 //        imp.importBankAccount();
 //        imp.importCategory();
-//        imp.importClass();
+//        imp.importAccountGroup();
 //        imp.importDonationBook();
 //        imp.importMemberDetail();
 //        imp.importSubClass();

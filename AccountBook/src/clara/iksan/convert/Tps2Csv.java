@@ -76,14 +76,14 @@ public class Tps2Csv {
 
         try {
             params.sourceFile = new File(tpsPath + "/MG001.TPS");
-            params.targetFile = new File(dataPath + "/csv/subclass.csv");
+            params.targetFile = new File(dataPath + "/csv/account_detail.csv");
             parseFile(params);
-            System.out.println("Success : MG001.TPS to subclass.csv");
+            System.out.println("Success : MG001.TPS to account_detail.csv");
 
             params.sourceFile = new File(tpsPath + "/MF001.TPS");
-            params.targetFile = new File(dataPath + "/csv/class.csv");
+            params.targetFile = new File(dataPath + "/csv/account_group.csv");
             parseFile(params);
-            System.out.println("Success : MF001.TPS to class.csv");
+            System.out.println("Success : MF001.TPS to account_group.csv");
 
             params.sourceFile = new File(tpsPath + "/MB001.TPS");
             params.targetFile = new File(dataPath + "/csv/account_book.csv");

@@ -94,16 +94,16 @@ public class CreateTables {
         return result;
     }
 
-    public boolean createClass() {
+    public boolean createAccountGroup() {
         boolean result = false;
 
         dbMgr.open();
-        dbMgr.executeUpdate("DROP TABLE IF EXISTS class;");
-        String query = "CREATE TABLE class\n" +
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS account_group;");
+        String query = "CREATE TABLE account_group\n" +
                 "(\n" +
-                "    `cls_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
+                "    `grp_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,\n" +
                 "    `cat_no`    INTEGER        NOT NULL,\n" +
-                "    `cla_name`  VARCHAR(45)    NOT NULL,\n" +
+                "    `grp_name`  VARCHAR(45)    NOT NULL,\n" +
                 "    `short`     VARCHAR(45)    NULL,\n" +
                 "    `easy`      INTEGER        NULL,\n" +
                 "    `cl_use`    INTEGER        NULL,\n" +
@@ -145,7 +145,7 @@ public class CreateTables {
                 "    `entry_date`  DATE            NOT NULL,\n" +
                 "    `io`          VARCHAR(45)     NOT NULL,\n" +
                 "    `cat_no`      INTEGER         NOT NULL,\n" +
-                "    `cls_no`      INTEGER         NOT NULL,\n" +
+                "    `grp_no`      INTEGER         NOT NULL,\n" +
                 "    `remark`      VARCHAR(255)    NOT NULL,\n" +
                 "    `item_price`  INTEGER         NOT NULL,\n" +
                 "    `price`       INTEGER         NOT NULL,\n" +
@@ -187,17 +187,17 @@ public class CreateTables {
         return result;
     }
 
-    public boolean createSubClass() {
+    public boolean createAccountDetail() {
         boolean result = false;
 
         dbMgr.open();
-        dbMgr.executeUpdate("DROP TABLE IF EXISTS subclass;");
-        String query = "CREATE TABLE subclass\n" +
+        dbMgr.executeUpdate("DROP TABLE IF EXISTS account_detail;");
+        String query = "CREATE TABLE account_detail\n" +
                 "(\n" +
-                "    `cls_no`  INTEGER        NOT NULL,\n" +
+                "    `grp_no`  INTEGER        NOT NULL,\n" +
                 "    `no`      INTEGER        NOT NULL, \n" +
                 "    `detail`  VARCHAR(45)    NOT NULL,\n" +
-                "    PRIMARY KEY (`cls_no`, `no`)\n" +
+                "    PRIMARY KEY (`grp_no`, `no`)\n" +
                 ");";
         result = dbMgr.executeUpdate(query);
         dbMgr.close();
@@ -248,13 +248,13 @@ public class CreateTables {
         createAccountBook();
         createBankAccount();
         createCategory();
-        createClass();
+        createAccountGroup();
         createDonationBook();
         createDonationReceipt();
         createMember();
         createMemberDetail();
         createReceiptMap();
-        createSubClass();
+        createAccountDetail();
     }
 
 }

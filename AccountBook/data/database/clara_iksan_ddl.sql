@@ -58,7 +58,7 @@ CREATE TABLE category
 );
 
 
-CREATE TABLE class
+CREATE TABLE group
 (
     `cls_no`    INTEGER        PRIMARY KEY    AUTOINCREMENT,
     `cat_no`    INTEGER        NOT NULL, 
@@ -120,7 +120,7 @@ CREATE TABLE donation_receipt
 );
 
 
-CREATE TABLE subclass
+CREATE TABLE group_detail
 (
     `cls_no`  INTEGER        NOT NULL,
     `no`      INTEGER        NOT NULL, 

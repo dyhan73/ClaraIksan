@@ -132,8 +132,8 @@ public class ImportCsv {
         return true;
     }
 
-    public boolean importClass() {
-        File cvs = new File(dataPath + "/csv/class.csv");
+    public boolean importAccountGroup() {
+        File cvs = new File(dataPath + "/csv/account_group.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -152,11 +152,11 @@ public class ImportCsv {
 
         dbMgr.open();
         try {
-            dbMgr.executeUpdate("DELETE FROM class;");
+            dbMgr.executeUpdate("DELETE FROM account_group;");
 
             while ((line = br.readLine()) != null) {
                 line = line.replaceFirst("^.*?,", "");
-                String query = "INSERT INTO class (cls_no, cat_no, cla_name, short, easy" +
+                String query = "INSERT INTO account_group (grp_no, cat_no, grp_name, short, easy" +
                         ", cl_use, tmp_str, tmp_num) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
@@ -228,7 +228,7 @@ public class ImportCsv {
 
             while ((line = br.readLine()) != null) {
                 line = line.replaceFirst("^.*?,", "");
-                String query = "INSERT INTO account_book (bnk_id, what_id, ord_no, entry_date, io, cat_no, cls_no" +
+                String query = "INSERT INTO account_book (bnk_id, what_id, ord_no, entry_date, io, cat_no, grp_no" +
                         ", remark, item_price, price, tax_rate, tax_cost, balance, chk_no, relation, bnk_rid" +
                         ", what_rid, slip, note, mark, bank_no, tmno, pay_method, tax_mark) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
@@ -244,8 +244,8 @@ public class ImportCsv {
         return true;
     }
 
-    public boolean importSubClass() {
-        File cvs = new File(dataPath + "/csv/subclass.csv");
+    public boolean importAccountDetail() {
+        File cvs = new File(dataPath + "/csv/account_detail.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(cvs);
@@ -264,11 +264,11 @@ public class ImportCsv {
 
         dbMgr.open();
         try {
-            dbMgr.executeUpdate("DELETE FROM subclass;");
+            dbMgr.executeUpdate("DELETE FROM account_detail;");
 
             while ((line = br.readLine()) != null) {
                 line = line.replaceFirst("^.*?,", "");
-                String query = "INSERT INTO subclass (cls_no, no, detail) VALUES (" + line + ");";
+                String query = "INSERT INTO account_detail (grp_no, no, detail) VALUES (" + line + ");";
                 dbMgr.executeUpdate(query);
             }
         } catch (Exception e) {
@@ -323,10 +323,10 @@ public class ImportCsv {
         importAccountBook();
         importBankAccount();
         importCategory();
-        importClass();
+        importAccountGroup();
         importDonationBook();
         importMemberDetail();
-        importSubClass();
+        importAccountDetail();
 
         System.out.println("Completed : All CSV files are imported to DB");
 

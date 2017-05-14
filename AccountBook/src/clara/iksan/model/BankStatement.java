@@ -12,8 +12,8 @@ public class BankStatement {
 
     private final StringProperty entryDate;
     private final StringProperty account;
-    private final StringProperty className;
-    private final StringProperty subClassName;
+    private final StringProperty groupName;
+    private final StringProperty groupDetailName;
     private final IntegerProperty price;
     private final StringProperty remark;
     private final StringProperty note;
@@ -21,11 +21,11 @@ public class BankStatement {
     // constructors
     //public BankStatement() { this(null, null, null, null, null, null, null); }
 
-    public BankStatement(String entryDate, String account, String className, String subClassName, Integer price, String remark, String note) {
+    public BankStatement(String entryDate, String account, String groupName, String groupDetailName, Integer price, String remark, String note) {
         this.entryDate = new SimpleStringProperty(entryDate);
         this.account = new SimpleStringProperty(account);
-        this.className = new SimpleStringProperty(className);
-        this.subClassName = new SimpleStringProperty(subClassName);
+        this.groupName = new SimpleStringProperty(groupName);
+        this.groupDetailName = new SimpleStringProperty(groupDetailName);
         this.price = new SimpleIntegerProperty(price);
         this.remark = new SimpleStringProperty(remark);
         this.note = new SimpleStringProperty(note);
@@ -56,28 +56,28 @@ public class BankStatement {
         this.account.set(account);
     }
 
-    public String getClassName() {
-        return className.get();
+    public String getGroupName() {
+        return groupName.get();
     }
 
-    public StringProperty classNameProperty() {
-        return className;
+    public StringProperty groupNameProperty() {
+        return groupName;
     }
 
-    public void setClassName(String className) {
-        this.className.set(className);
+    public void setGroupName(String groupName) {
+        this.groupName.set(groupName);
     }
 
-    public String getSubClassName() {
-        return subClassName.get();
+    public String getGroupDetailName() {
+        return groupDetailName.get();
     }
 
-    public StringProperty subClassNameProperty() {
-        return subClassName;
+    public StringProperty groupDetailNameProperty() {
+        return groupDetailName;
     }
 
-    public void setSubClassName(String subClassName) {
-        this.subClassName.set(subClassName);
+    public void setGroupDetailName(String groupDetailName) {
+        this.groupDetailName.set(groupDetailName);
     }
 
     public int getPrice() {

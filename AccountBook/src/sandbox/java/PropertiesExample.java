@@ -22,7 +22,7 @@ public class PropertiesExample {
     public static String getKey(String key) throws Exception {
 
         // ClassLoader.getResourceAsStream("some/pkg/resource.properties");
-        // Class.getResourceAsStream("/some/pkg/resource.properties");
+        // AccountGroup.getResourceAsStream("/some/pkg/resource.properties");
         // ResourceBundle.getBundle("some.pkg.resource");
         String value = null;
         InputStream is = new FileInputStream(defaultPropertiesPath);

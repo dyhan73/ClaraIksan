@@ -1,9 +1,6 @@
 package clara.iksan;
 
-import clara.iksan.controller.AboutDialog;
-import clara.iksan.controller.RootLayout;
-import clara.iksan.controller.SearchAccountBook;
-import clara.iksan.controller.ConfigDialog;
+import clara.iksan.controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -149,4 +146,57 @@ public class MainApp extends Application {
     public Stage getPrimaryStage() { return primaryStage; }
 
 
+    public void showCategoryDialog() {
+        try {
+            // get main layout from fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/CategoryDialog.fxml"));
+            AnchorPane dialog = (AnchorPane) loader.load();
+
+            // create dialog (modal)
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("대분류 관리");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(dialog);
+            dialogStage.setScene(scene);
+
+            // set stage
+            CategoryDialog controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+
+            // show dialog and wait
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showClassDialog() {
+        try {
+            // get main layout from fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/AccountGroupDialog.fxml"));
+            AnchorPane dialog = (AnchorPane) loader.load();
+
+            // create dialog (modal)
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("계정과목 관리");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(dialog);
+            dialogStage.setScene(scene);
+
+            // set stage
+            AccountGroupDialog controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+
+            // show dialog and wait
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -61,4 +61,19 @@ public class RootLayout {
     private void handleExit() {
         System.exit(0);
     }
+
+    @FXML
+    private void handleBackup() {
+
+    }
+
+    @FXML
+    private void handleCategory() {
+        mainApp.showCategoryDialog();
+    }
+
+    @FXML
+    private void handleClassItem() {
+        mainApp.showClassDialog();
+    }
 }

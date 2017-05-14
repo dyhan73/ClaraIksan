@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clara.iksan.controller.AccountGroupDialog">
+   <children>
+      <TableView fx:id="accountGroupTable" layoutX="15.0" layoutY="14.0" prefHeight="338.0" prefWidth="370.0">
+        <columns>
+          <TableColumn fx:id="grpNoColumn" prefWidth="70.0" text="번호" />
+          <TableColumn fx:id="grpNameColumn" prefWidth="150.0" text="계정명" />
+            <TableColumn fx:id="catNameColumn" prefWidth="150.0" text="대분류명" />
+        </columns>
+      </TableView>
+      <Button layoutX="285.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="100.0" text="취소" />
+      <Button layoutX="173.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleAdd" prefWidth="100.0" text="추가하기" />
+   </children>
+</AnchorPane>
