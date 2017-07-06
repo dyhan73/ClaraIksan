@@ -3,6 +3,8 @@ package clara.iksan.controller;
 import clara.iksan.MainApp;
 import clara.iksan.model.BankStatement;
 import clara.iksan.manager.DbManager;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -63,10 +65,20 @@ public class SearchAccountBook {
         remarkColumn.setCellValueFactory(cellData -> cellData.getValue().remarkProperty());
         noteColumn.setCellValueFactory(cellData -> cellData.getValue().noteProperty());
 
-        //entryDateColumn.setStyle("-fx-alignment: CENTER-RIGHT;")
+        DbManager dbMan = new DbManager();
+        dbMan.open();
+        accountChoiceBox.setItems(dbMan.getBankAccounts());
+        dbMan.close();
 
         // set listener
-        // not needed yet
+//        accountChoiceBox.getSelectionModel().selectedIndexProperty().addListener(
+//                new ChangeListener<Number>() {
+//                    @Override
+//                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+//                        handleSearch();
+//                    }
+//                }
+//        );
     }
 
     @FXML
@@ -74,13 +86,13 @@ public class SearchAccountBook {
         String searchKeyword = searchTextField.getText();
         //String startDate = startDatePicker.getConverter().toString();
 
-        //String account = accountChoiceBox.getSelectionModel().getSelectedItem().toString();
+        String account = accountChoiceBox.getSelectionModel().getSelectedItem().toString();
 
         bankStatementData.clear();
 
         DbManager dbMgr = new DbManager();
         dbMgr.open();
-        bankStatementData = dbMgr.searchBankStatement(searchKeyword);
+        bankStatementData = dbMgr.searchBankStatement(searchKeyword, account);
         dbMgr.close();
 
         bankStatementTable.setItems(bankStatementData);
