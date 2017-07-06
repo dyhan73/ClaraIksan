@@ -85,7 +85,7 @@ public class DbManager {
         return rs;
     }
 
-    public ObservableList<BankStatement> searchBankStatement(String searchKeyword) {
+    public ObservableList<BankStatement> searchBankStatement(String searchKeyword, String accountName) {
         if (this.isOpened == false)
             return null;
 
@@ -97,10 +97,10 @@ public class DbManager {
 
             String query = "SELECT DATE(ab.entry_date) AS entry_date, ba.id_name, ca.cat_name, cl.grp_name, ab.price, ab.remark, ab.note\n" +
                     "FROM account_book ab\n" +
-                    "  JOIN bank_account ba ON ab.bnk_id = ba.bnk_id\n" +
+                    "  JOIN bank_account ba ON ab.bnk_id = ba.bnk_id AND ba.id_name = '" + accountName + "'\n" +
                     "  JOIN category ca ON ab.cat_no = ca.cat_no\n" +
                     "  JOIN account_group cl ON ab.grp_no = cl.grp_no\n" +
-                    "WHERE ab.bnk_id != 3 AND ab.remark LIKE '%" + searchKeyword + "%'\n" +
+                    "WHERE ab.remark LIKE '%" + searchKeyword + "%'\n" +
                     "ORDER BY entry_date;";
 
             System.out.println(query);
@@ -189,6 +189,35 @@ public class DbManager {
                         rs.getInt("easy"),
                         rs.getInt("cl_use"));
                 data.add(accountGroup);
+            }
+
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+
+    public ObservableList<String> getBankAccounts() {
+        if (this.isOpened == false)
+            return null;
+
+        ObservableList<String> data = FXCollections.observableArrayList();
+
+        try {
+            Statement stmt = this.connection.createStatement();
+            ResultSet rs = null;
+
+            String query = "SELECT id_name FROM bank_account ORDER BY bnk_id;";
+
+            System.out.println(query);
+
+            rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                data.add(rs.getString("id_name"));
             }
 
             rs.close();
